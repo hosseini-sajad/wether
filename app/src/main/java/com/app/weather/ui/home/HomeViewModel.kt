@@ -6,9 +6,11 @@ import com.app.weather.core.utils.parsError
 import com.app.weather.data.model.WeatherResponseEntity
 import com.app.weather.domain.usecase.GetWeatherOfCityUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
@@ -46,6 +48,7 @@ class HomeViewModel @Inject constructor(
                     it.copy(isLoading = false, errorMessage = errorResponse.message)
                 }
             }
+            .flowOn(IO)
             .launchIn(viewModelScope)
     }
 
