@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.update
 import javax.inject.Inject
@@ -30,12 +31,22 @@ class HomeViewModel @Inject constructor(
             .onStart {
                 _uiState.update { it.copy(isLoading = true, errorMessage = null) }
             }
+            .onEach { weather ->
+                _uiState.update {
+                    it.copy(
+                        isLoading = false,
+                        weather = weather,
+                        errorMessage = null
+                    )
+                }
+            }
             .catch { exception ->
                 val errorResponse = parsError(exception)
                 _uiState.update {
                     it.copy(isLoading = false, errorMessage = errorResponse.message)
                 }
-            }.launchIn(viewModelScope)
+            }
+            .launchIn(viewModelScope)
     }
 
 }
