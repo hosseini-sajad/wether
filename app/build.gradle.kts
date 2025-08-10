@@ -71,4 +71,11 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
+
+
+    // Coroutine testing
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2")
+    testImplementation("org.mockito:mockito-core:5.18.0")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:6.0.0")
+    testImplementation("org.jetbrains.kotlin:kotlin-test:1.9.10")
 }
