@@ -1,4 +1,4 @@
-package com.app.weather.data.source.model
+package com.app.weather.data.model
 
 data class WeatherResponseEntity(
     val name: String,
