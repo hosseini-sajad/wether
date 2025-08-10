@@ -1,16 +1,16 @@
 package com.app.weather.data.source.network.dto
 
-data class WeatherDto(
+data class WeatherResponseDto(
     val name: String,
-    val main: Main,
-    val weather: List<Weather>
+    val main: MainDto,
+    val weatherDto: List<WeatherDto>
 )
 
-data class Main(
+data class MainDto(
     val temp: Float
 )
 
-data class Weather(
+data class WeatherDto(
     val main: String,
     val icon: String
 )
