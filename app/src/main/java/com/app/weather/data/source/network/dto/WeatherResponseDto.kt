@@ -3,10 +3,14 @@ package com.app.weather.data.source.network.dto
 import com.app.weather.data.model.MainEntity
 import com.app.weather.data.model.WeatherEntity
 import com.app.weather.data.model.WeatherResponseEntity
+import com.google.gson.annotations.SerializedName
 
 data class WeatherResponseDto(
+    @SerializedName("name")
     val name: String,
+    @SerializedName("main")
     val main: MainDto,
+    @SerializedName("weather")
     val weatherDto: List<WeatherDto>
 )
 
