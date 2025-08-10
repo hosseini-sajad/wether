@@ -26,5 +26,10 @@ An Android application that displays city weather information using the OpenWeat
     - Select your device/emulator from the Android Studio toolbar.
     - Click Run ▶ or press Shift+F10
 
+## What I'd add with more time
+   - 5-day forecast screen with hourly breakdown.
+   - Offline caching of the last fetched data.
+   - Unit and instrumentation tests.
+
 ## Special required answer
    ZZZZ4Z4Z4Z4Z4Z4Z4Z4ZZ
