@@ -65,7 +65,8 @@ fun HomeScreen(
 
             Button(
                 onClick = onSearch,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                enabled = cityName.isNotBlank()
             ) {
                 Text("Search")
             }
@@ -74,7 +75,10 @@ fun HomeScreen(
 
             when {
                 uiState.errorMessage != null -> {
-                    ErrorCard(message = uiState.errorMessage, onRetry = onRetry)
+                    ErrorCard(
+                        message = uiState.errorMessage,
+                        onRetry = onRetry
+                    )
                 }
 
                 uiState.weather != null -> {
@@ -86,8 +90,7 @@ fun HomeScreen(
         if (uiState.isLoading) {
             Box(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .background(Color.Black.copy(alpha = 0.3f)),
+                    .fillMaxSize(),
                 contentAlignment = Alignment.Center
             ) {
                 CircularProgressIndicator()
