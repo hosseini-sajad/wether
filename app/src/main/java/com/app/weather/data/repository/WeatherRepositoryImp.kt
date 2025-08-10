@@ -14,7 +14,7 @@ class WeatherRepositoryImp @Inject constructor(
     private val networkDataSource: NetworkDataSource
 ) : WeatherRepository {
 
-    override fun getMovieDetails(cityName: String, apiKey: String) = flow {
+    override fun getCityWeather(cityName: String, apiKey: String) = flow {
         val cityDto = networkDataSource.getCityWeather(
             cityName = cityName,
             apiKey = apiKey
@@ -22,7 +22,7 @@ class WeatherRepositoryImp @Inject constructor(
         if (cityDto != null) {
             emit(cityDto.toEntity())
         } else {
-            throw kotlin.Exception("No movie details found.")
+            throw Exception("Not found weather for $cityName")
         }
     }.catch { e ->
         val errorResponse = parsError(e)

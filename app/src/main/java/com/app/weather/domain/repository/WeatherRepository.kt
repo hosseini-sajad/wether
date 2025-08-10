@@ -4,7 +4,7 @@ import com.app.weather.data.model.WeatherResponseEntity
 import kotlinx.coroutines.flow.Flow
 
 interface WeatherRepository {
-    fun getMovieDetails(
+    fun getCityWeather(
         cityName: String,
         apiKey: String
     ): Flow<WeatherResponseEntity>
